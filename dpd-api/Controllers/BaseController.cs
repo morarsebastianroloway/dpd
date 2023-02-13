@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Text;
 
 namespace dpd_api.Controllers
 {
@@ -27,6 +28,27 @@ namespace dpd_api.Controllers
             BaseUrl = baseUrl;
             UserName = userName;
             Password = password;
+        }
+
+        protected string GetUriWithQueryString(string requestUri, Dictionary<string, string> queryStringParams)
+        {
+            bool startingQuestionMarkAdded = false;
+            var sb = new StringBuilder();
+            sb.Append(requestUri);
+            foreach (var parameter in queryStringParams)
+            {
+                if (parameter.Value == null)
+                {
+                    continue;
+                }
+
+                sb.Append(startingQuestionMarkAdded ? '&' : '?');
+                sb.Append(parameter.Key);
+                sb.Append('=');
+                sb.Append(parameter.Value);
+                startingQuestionMarkAdded = true;
+            }
+            return sb.ToString();
         }
     }
 }

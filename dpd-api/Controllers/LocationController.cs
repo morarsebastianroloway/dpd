@@ -31,7 +31,7 @@ namespace dpd_api.Controllers
             var url = GetUriWithQueryString("location/office", query);
 
             // Construct http client
-            using HttpClient httpClient = new HttpClient();
+            using HttpClient httpClient = new();
             httpClient.BaseAddress = new Uri(BaseUrl);
 
             // Make the call and return the response
@@ -45,28 +45,6 @@ namespace dpd_api.Controllers
             }
 
             return Ok();
-        }
-
-        private string GetUriWithQueryString(string requestUri,
-    Dictionary<string, string> queryStringParams)
-        {
-            bool startingQuestionMarkAdded = false;
-            var sb = new StringBuilder();
-            sb.Append(requestUri);
-            foreach (var parameter in queryStringParams)
-            {
-                if (parameter.Value == null)
-                {
-                    continue;
-                }
-
-                sb.Append(startingQuestionMarkAdded ? '&' : '?');
-                sb.Append(parameter.Key);
-                sb.Append('=');
-                sb.Append(parameter.Value);
-                startingQuestionMarkAdded = true;
-            }
-            return sb.ToString();
         }
     }
 }
