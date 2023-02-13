@@ -1,0 +1,17 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:dpd:api:rest:client:ContractInfo",
+  "properties" : {
+    "error" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:dpd:api:rest:Error"
+    },
+    "id" : {
+      "type" : "integer"
+    },
+    "specialDeliveryRequirements" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:dpd:api:rest:client:SpecialDeliveryRequirements"
+    }
+  }
+}

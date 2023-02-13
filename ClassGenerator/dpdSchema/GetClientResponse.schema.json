@@ -1,0 +1,14 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:dpd:api:rest:client:GetClientResponse",
+  "properties" : {
+    "error" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:dpd:api:rest:Error"
+    },
+    "client" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:dpd:api:rest:client:Client"
+    }
+  }
+}

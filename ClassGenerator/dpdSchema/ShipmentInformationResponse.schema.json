@@ -1,0 +1,17 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:dpd:api:rest:shipment:ShipmentInformationResponse",
+  "properties" : {
+    "error" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:dpd:api:rest:Error"
+    },
+    "shipments" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "$ref" : "urn:jsonschema:com:dpd:api:rest:shipment:model:Shipment"
+      }
+    }
+  }
+}

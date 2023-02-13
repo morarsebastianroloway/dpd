@@ -1,0 +1,12 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:dpd:api:rest:track:model:BulkTrackingDataFile",
+  "properties" : {
+    "id" : {
+      "type" : "integer"
+    },
+    "url" : {
+      "type" : "string"
+    }
+  }
+}

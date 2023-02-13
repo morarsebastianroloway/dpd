@@ -1,0 +1,17 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:dpd:api:rest:calculation:CalculationResponse",
+  "properties" : {
+    "error" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:dpd:api:rest:Error"
+    },
+    "calculations" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "$ref" : "urn:jsonschema:com:dpd:api:rest:calculation:model:CalculationResult"
+      }
+    }
+  }
+}

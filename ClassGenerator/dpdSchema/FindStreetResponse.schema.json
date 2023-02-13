@@ -1,0 +1,17 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:dpd:api:rest:location:street:FindStreetResponse",
+  "properties" : {
+    "error" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:dpd:api:rest:Error"
+    },
+    "streets" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "$ref" : "urn:jsonschema:com:dpd:api:rest:location:model:Street"
+      }
+    }
+  }
+}

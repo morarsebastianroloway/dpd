@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dpd-api", "dpd-api.csproj", "{C7B94F8B-33EC-4B81-B7D8-0142B1CC09D1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassGenerator", "..\ClassGenerator\ClassGenerator.csproj", "{60312CEB-F6B6-40EA-896C-283AE6040272}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C7B94F8B-33EC-4B81-B7D8-0142B1CC09D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7B94F8B-33EC-4B81-B7D8-0142B1CC09D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7B94F8B-33EC-4B81-B7D8-0142B1CC09D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60312CEB-F6B6-40EA-896C-283AE6040272}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60312CEB-F6B6-40EA-896C-283AE6040272}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60312CEB-F6B6-40EA-896C-283AE6040272}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60312CEB-F6B6-40EA-896C-283AE6040272}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
