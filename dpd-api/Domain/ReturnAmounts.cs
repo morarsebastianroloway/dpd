@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace dpd_api.Domain.Responses
+namespace dpd_api.Domain
 {
     public class ReturnAmounts
     {
