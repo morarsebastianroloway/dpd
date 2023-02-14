@@ -1,4 +1,5 @@
 using dpd_api.Domain;
+using dpd_api.Domain.Responses;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Text;
@@ -18,36 +19,37 @@ namespace dpd_api.Controllers
             _logger = logger;
         }
 
+        //[HttpGet(Name = "GetServices")]
+        //public async Task<IActionResult> GetServices()
+        //{
+        //    // Construct the url
+        //    var query = new Dictionary<string, string>()
+        //    {
+        //        ["userName"] = UserName,
+        //        ["password"] = Password,
+        //    };
+
+        //    var url = GetUriWithQueryString("services", query);
+
+        //    // Construct http client
+        //    using HttpClient httpClient = new();
+        //    httpClient.BaseAddress = new Uri(BaseUrl);
+
+        //    // Make the call and return the response
+        //    var response = await httpClient.GetAsync(url);
+
+        //    if (response.IsSuccessStatusCode)
+        //    {
+
+        //        var data = await response.Content.ReadAsStringAsync();
+        //        return Content(data, "application/json");
+        //    }
+
+        //    return Ok();
+        //}
+
         [HttpGet(Name = "GetServices")]
         public async Task<IActionResult> GetServices()
-        {
-            // Construct the url
-            var query = new Dictionary<string, string>()
-            {
-                ["userName"] = UserName,
-                ["password"] = Password,
-            };
-
-            var url = GetUriWithQueryString("services", query);
-
-            // Construct http client
-            using HttpClient httpClient = new();
-            httpClient.BaseAddress = new Uri(BaseUrl);
-
-            // Make the call and return the response
-            var response = await httpClient.GetAsync(url);
-
-            if (response.IsSuccessStatusCode)
-            {
-
-                var data = await response.Content.ReadAsStringAsync();
-                return Content(data, "application/json");
-            }
-
-            return Ok();
-        }
-        [HttpPost(Name = "PostServices")]
-        public async Task<IActionResult> PostServices()
         {
             using StringContent jsonContent = new(
                 JsonSerializer.Serialize(new

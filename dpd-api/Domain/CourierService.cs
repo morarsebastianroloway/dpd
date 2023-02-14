@@ -1,15 +1,8 @@
 ﻿using System.Text.Json.Serialization;
+using dpd_api.Domain.Responses;
 
 namespace dpd_api.Domain
 {
-    public class ServicesResponse
-    {
-        [JsonPropertyName("services")]
-        public List<CourierService> CourierServices { get; set; }
-
-        [JsonPropertyName("error")]
-        public Error Error { get; set; }
-    }
     public class CourierService
     {
         [JsonPropertyName("id")]

@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Text.Json.Serialization;
 
-namespace dpd_api.Domain
+namespace dpd_api.Domain.Responses
 {
     public class Error
     {
