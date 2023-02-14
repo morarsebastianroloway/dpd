@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace dpd_api.Domain
 {
@@ -8,14 +8,14 @@ namespace dpd_api.Domain
         /// Fixed discount card contract id
         /// </summary>
         /// <remarks>Required</remarks>
-        [JsonPropertyName("contractId")]
+        [JsonProperty(PropertyName = "contractId")]
         public long ContractId { get; set; }
 
         /// <summary>
         /// Fixed discount card id
         /// </summary>
         /// <remarks>Required</remarks>
-        [JsonPropertyName("cardId")]
+        [JsonProperty(PropertyName = "cardId")]
         public long CardId { get; set; }
     }
 }

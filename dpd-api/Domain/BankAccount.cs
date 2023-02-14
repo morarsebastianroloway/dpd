@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace dpd_api.Domain
 {
@@ -7,13 +7,13 @@ namespace dpd_api.Domain
         /// <summary>
         /// IBAN
         /// </summary>
-        [JsonPropertyName("iban")]
+        [JsonProperty(PropertyName = "iban")]
         public string Iban { get; set; }
 
         /// <summary>
         /// Bank account holder
         /// </summary>
-        [JsonPropertyName("accountHolder")]
+        [JsonProperty(PropertyName = "accountHolder")]
         public string AccountHolder { get; set; }
     }
 }

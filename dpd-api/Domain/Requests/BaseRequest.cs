@@ -1,19 +1,19 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace dpd_api.Domain.Requests
 {
     public class BaseRequest
     {
-        [JsonPropertyName("userName")]
+        [JsonProperty(PropertyName = "userName")]
         public string UserName { get; set; }
 
-        [JsonPropertyName("password")]
+        [JsonProperty(PropertyName = "password")]
         public string Password { get; set; }
 
-        [JsonPropertyName("language")]
+        [JsonProperty(PropertyName = "language")]
         public string Language { get; set; }
 
-        [JsonPropertyName("clientSystemId")]
+        [JsonProperty(PropertyName = "clientSystemId")]
         public long ClientSystemId { get; set; }
     }
 }

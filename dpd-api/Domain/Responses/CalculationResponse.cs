@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace dpd_api.Domain.Responses
 {
@@ -7,7 +7,7 @@ namespace dpd_api.Domain.Responses
         /// <summary>
         /// Calculations for all service ids in request
         /// </summary>
-        [JsonPropertyName("calculations")]
+        [JsonProperty(PropertyName = "calculations")]
         public IEnumerable<CalculationResult> Calculations { get; set; }
     }
 }

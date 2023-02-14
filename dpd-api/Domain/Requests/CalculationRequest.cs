@@ -1,22 +1,22 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace dpd_api.Domain.Requests
 {
     public class CalculationRequest : BaseRequest
     {
-        [JsonPropertyName("sender")]
+        [JsonProperty(PropertyName = "sender")]
         public CalculationSender Sender { get; set; }
 
-        [JsonPropertyName("recipient")]
+        [JsonProperty(PropertyName = "recipient")]
         public CalculationRecipient Recipient { get; set; }
 
-        [JsonPropertyName("service")]
+        [JsonProperty(PropertyName = "service")]
         public CalculationService Service { get; set; }
 
-        [JsonPropertyName("content")]
+        [JsonProperty(PropertyName = "content")]
         public CalculationContent Content { get; set; }
 
-        [JsonPropertyName("payment")]
+        [JsonProperty(PropertyName = "payment")]
         public ShipmentPayment Payment { get; set; }
     }
 }

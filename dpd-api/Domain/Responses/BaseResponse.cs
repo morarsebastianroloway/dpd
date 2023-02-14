@@ -1,10 +1,10 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace dpd_api.Domain.Responses
 {
     public class BaseResponse
     {
-        [JsonPropertyName("error")]
+        [JsonProperty(PropertyName = "error")]
         public Error Error { get; set; }
     }
 }

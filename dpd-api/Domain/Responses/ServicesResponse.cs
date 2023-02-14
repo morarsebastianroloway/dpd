@@ -1,10 +1,10 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace dpd_api.Domain.Responses
 {
     public class ServicesResponse : BaseResponse
     {
-        [JsonPropertyName("services")]
+        [JsonProperty(PropertyName = "services")]
         public List<CourierService> CourierServices { get; set; }
     }
 }

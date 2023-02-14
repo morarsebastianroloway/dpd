@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using System.Text;
 using dpd_api.Domain.Requests;
 using dpd_api.Domain.Responses;
-using System.Text.Json.Serialization;
 using Newtonsoft.Json;
 
 namespace dpd_api.Controllers
@@ -42,8 +41,8 @@ namespace dpd_api.Controllers
                     ServiceIds = new List<int> 
                     {
                         2505, // DPD STANDARD // Weight < 31.5Kg
-                        2005, // CARGO NATIONAL // Weight > 31.5Kg < 50Kg
-                        2412, // PALLET ONE RO // Weight > 50Kg
+                        //2005, // CARGO NATIONAL // Weight > 31.5Kg < 50Kg
+                        //2412, // PALLET ONE RO // Weight > 50Kg
                         //2113, // CLASIC NATIONAL LOCO
                         //2002, // CLASIC NATIONAL
                         //2323, // CERERE DE COLECTARE INTERNATIONALA (RUTIER)

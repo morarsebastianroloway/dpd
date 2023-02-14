@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace dpd_api.Domain.Responses
 {
@@ -7,37 +7,37 @@ namespace dpd_api.Domain.Responses
         /// <summary>
         /// Service id
         /// </summary>
-        [JsonPropertyName("serviceId")]
+        [JsonProperty(PropertyName = "serviceId")]
         public int ServiceId { get; set; }
 
         /// <summary>
         /// Additional services included in calculation
         /// </summary>
-        [JsonPropertyName("additionalServices")]
+        [JsonProperty(PropertyName = "additionalServices")]
         public ShipmentAdditionalServices AdditionalServices { get; set; }
 
         /// <summary>
         /// Returned, if customer has access to view the amounts of the shipment
         /// </summary>
-        [JsonPropertyName("price")]
+        [JsonProperty(PropertyName = "price")]
         public ShipmentPrice price { get; set; }
 
         /// <summary>
         /// Pickup date
         /// </summary>
-        [JsonPropertyName("pickupDate")]
+        [JsonProperty(PropertyName = "pickupDate")]
         public DateOnly PickupDate { get; set; }
 
         /// <summary>
         /// Deadline for delivery. Returned, if available
         /// </summary>
-        [JsonPropertyName("deliveryDeadline")]
+        [JsonProperty(PropertyName = "deliveryDeadline")]
         public DateTime DeliveryDeadline { get; set; }
 
         /// <summary>
         /// Response error
         /// </summary>
-        [JsonPropertyName("error")]
+        [JsonProperty(PropertyName = "error")]
         public Error Error { get; set; }
     }
 }

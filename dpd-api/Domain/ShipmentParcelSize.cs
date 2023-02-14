@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace dpd_api.Domain
 {
@@ -8,21 +8,21 @@ namespace dpd_api.Domain
         /// Parcel width in cm
         /// </summary>
         /// <remarks>Required</remarks>
-        [JsonPropertyName("width")]
+        [JsonProperty(PropertyName = "width")]
         public int Width { get; set; }
 
         /// <summary>
         /// Parcel depth in cm
         /// </summary>
         /// <remarks>Required</remarks>
-        [JsonPropertyName("depth")]
+        [JsonProperty(PropertyName = "depth")]
         public int Depth { get; set; }
 
         /// <summary>
         /// Parcel height in cm
         /// </summary>
         /// <remarks>Required</remarks>
-        [JsonPropertyName("height")]
+        [JsonProperty(PropertyName = "height")]
         public int Height { get; set; }
     }
 }
