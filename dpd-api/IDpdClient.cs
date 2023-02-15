@@ -7,6 +7,10 @@ namespace dpd_api
         where TRequest : BaseRequest
         where TResponse : BaseResponse
     {
-        Task<TResponse?> MakeShipmentRequest(TRequest request);
+        Task<TResponse?> MakeServicesRequestAsync(TRequest request);
+        Task<TResponse?> MakeCalculationRequestAsync(TRequest request);
+        Task<TResponse?> MakeShipmentRequestAsync(TRequest request);
+        Task<(TResponse?, byte[]?)> MakePrintRequestAsync(TRequest request);
+        Task<TResponse?> MakePickupRequestAsync(TRequest request);
     }
 }

@@ -16,7 +16,7 @@ namespace dpd_api.Controllers
         private readonly IDpdClient<ShipmentRequest, CreateShipmentResponse> _dpdClient;
 
         public ShipmentController(
-            ILogger<ShipmentController> logger, 
+            ILogger<ShipmentController> logger,
             IConfiguration configuration,
             IDpdClient<ShipmentRequest, CreateShipmentResponse> dpdClient)
             : base(configuration)
@@ -68,8 +68,8 @@ namespace dpd_api.Controllers
                 }
             };
 
-            var data = await _dpdClient.MakeShipmentRequest(request);
-            if(data!=null)
+            var data = await _dpdClient.MakeShipmentRequestAsync(request);
+            if (data != null)
             {
                 return Content(JsonConvert.SerializeObject(data), "application/json");
             }

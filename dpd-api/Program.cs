@@ -16,7 +16,11 @@ builder.Services.AddControllers()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
+builder.Services.AddTransient(typeof(IDpdClient<ServicesRequest, ServicesResponse>), typeof(DpdClient<ServicesRequest, ServicesResponse>));
+builder.Services.AddTransient(typeof(IDpdClient<CalculationRequest, CalculationResponse>), typeof(DpdClient<CalculationRequest, CalculationResponse>));
 builder.Services.AddTransient(typeof(IDpdClient<ShipmentRequest, CreateShipmentResponse>), typeof(DpdClient<ShipmentRequest, CreateShipmentResponse>));
+builder.Services.AddTransient(typeof(IDpdClient<PrintRequest, PrintResponse>), typeof(DpdClient<PrintRequest, PrintResponse>));
+builder.Services.AddTransient(typeof(IDpdClient<PickupRequest, PickupResponse>), typeof(DpdClient<PickupRequest, PickupResponse>));
 
 var app = builder.Build();
 

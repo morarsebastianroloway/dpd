@@ -5,6 +5,7 @@ using dpd_api.Domain.Responses;
 using Newtonsoft.Json;
 using dpd_api.Domain.Calculation;
 using dpd_api.Domain.Shipment;
+using System.Net.Sockets;
 
 namespace dpd_api.Controllers
 {
@@ -13,11 +14,16 @@ namespace dpd_api.Controllers
     public class CalculationController : BaseController
     {
         private readonly ILogger<CalculationController> _logger;
+        private readonly IDpdClient<CalculationRequest, CalculationResponse> _dpdClient;
 
-        public CalculationController(ILogger<CalculationController> logger, IConfiguration configuration)
+        public CalculationController(
+            ILogger<CalculationController> logger,
+            IConfiguration configuration,
+            IDpdClient<CalculationRequest, CalculationResponse> dpdClient)
             : base(configuration)
         {
             _logger = logger;
+            _dpdClient = dpdClient;
         }
 
         [HttpGet(Name = "GetCalculation")]
@@ -62,32 +68,9 @@ namespace dpd_api.Controllers
                 }
             };
 
-            string jsonData = JsonConvert.SerializeObject(request);
-            // TODO: If we need to save the request here it should be
-
-            using StringContent jsonContent = new(
-                jsonData,
-                Encoding.UTF8,
-                "application/json");
-
-            // Construct the url
-            var url = "calculate";
-
-            // Construct http client
-            using HttpClient httpClient = new();
-            httpClient.BaseAddress = new Uri(BaseUrl);
-
-            // Make the call and return the response
-            var response = await httpClient.PostAsync(url, jsonContent);
-
-            if (response.IsSuccessStatusCode)
+            var data = await _dpdClient.MakeCalculationRequestAsync(request);
+            if (data != null)
             {
-                var dataString = await response.Content.ReadAsStringAsync();
-                // TODO: If we need to save the response here it should be
-
-                //var data = await response.Content.ReadFromJsonAsync<CalculationResponse>();
-                var data = JsonConvert.DeserializeObject<CalculationResponse>(dataString);
-
                 return Content(JsonConvert.SerializeObject(data), "application/json");
             }
 

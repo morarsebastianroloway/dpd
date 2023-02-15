@@ -14,11 +14,13 @@ namespace dpd_api.Controllers
     public class ServicesController : BaseController
     {
         private readonly ILogger<ServicesController> _logger;
+        private readonly IDpdClient<ServicesRequest, ServicesResponse> _dpdClient;
 
-        public ServicesController(ILogger<ServicesController> logger, IConfiguration configuration)
-            :base(configuration)
+        public ServicesController(ILogger<ServicesController> logger, IConfiguration configuration, IDpdClient<ServicesRequest, ServicesResponse> dpdClient)
+            : base(configuration)
         {
             _logger = logger;
+            _dpdClient = dpdClient;
         }
 
 
@@ -31,31 +33,9 @@ namespace dpd_api.Controllers
                 Password = Password,
             };
 
-            string jsonData = JsonConvert.SerializeObject(request);
-            // TODO: If we need to save the request here it should be
-
-            using StringContent jsonContent = new(
-                jsonData,
-                Encoding.UTF8,
-                "application/json");
-
-            // Construct the url
-            var url = "services";
-
-            // Construct http client
-            using HttpClient httpClient = new();
-            httpClient.BaseAddress = new Uri(BaseUrl);
-
-            // Make the call and return the response
-            var response = await httpClient.PostAsync(url, jsonContent);
-
-            if (response.IsSuccessStatusCode)
+            var data = await _dpdClient.MakeServicesRequestAsync(request);
+            if (data != null)
             {
-                var dataString = await response.Content.ReadAsStringAsync();
-                // TODO: If we need to save the response here it should be
-
-                var data = JsonConvert.DeserializeObject<ServicesResponse>(dataString);
-
                 return Content(JsonConvert.SerializeObject(data), "application/json");
             }
 

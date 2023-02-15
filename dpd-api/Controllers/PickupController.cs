@@ -5,6 +5,7 @@ using dpd_api.Domain.Requests;
 using dpd_api.Domain.Responses;
 using Newtonsoft.Json;
 using dpd_api.Domain.Shipment;
+using System.Net.Sockets;
 
 namespace dpd_api.Controllers
 {
@@ -13,11 +14,16 @@ namespace dpd_api.Controllers
     public class PickupController : BaseController
     {
         private readonly ILogger<PickupController> _logger;
+        private readonly IDpdClient<PickupRequest, PickupResponse> _dpdClient;
 
-        public PickupController(ILogger<PickupController> logger, IConfiguration configuration)
+        public PickupController(
+            ILogger<PickupController> logger,
+            IConfiguration configuration,
+            IDpdClient<PickupRequest, PickupResponse> dpdClient)
             : base(configuration)
         {
             _logger = logger;
+            _dpdClient = dpdClient;
         }
 
         [HttpGet(Name = "GetPickup")]
@@ -31,36 +37,13 @@ namespace dpd_api.Controllers
                 PickupScope = Domain.Enums.PickupScope.EXPLICIT_SHIPMENT_ID_LIST,
                 ExplicitShipmentIdList = new[]
                 {
-                    "80613928583" // Taken from CreateShipment
+                    "80614229601" // Taken from CreateShipment
                 }
             };
 
-            string jsonData = JsonConvert.SerializeObject(request);
-            // TODO: If we need to save the request here it should be
-
-            using StringContent jsonContent = new(
-                jsonData,
-                Encoding.UTF8,
-                "application/json");
-
-            // Construct the url
-            var url = "pickup";
-
-            // Construct http client
-            using HttpClient httpClient = new();
-            httpClient.BaseAddress = new Uri(BaseUrl);
-
-            // Make the call and return the response
-            var response = await httpClient.PostAsync(url, jsonContent);
-
-            if (response.IsSuccessStatusCode)
+            var data = await _dpdClient.MakePickupRequestAsync(request);
+            if (data != null)
             {
-                var dataString = await response.Content.ReadAsStringAsync();
-                // TODO: If we need to save the response here it should be
-
-                //var data = await response.Content.ReadFromJsonAsync<CalculationResponse>();
-                var data = JsonConvert.DeserializeObject<PickupResponse>(dataString);
-
                 return Content(JsonConvert.SerializeObject(data), "application/json");
             }
 
