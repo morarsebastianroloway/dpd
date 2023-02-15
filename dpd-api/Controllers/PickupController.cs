@@ -6,6 +6,7 @@ using dpd_api.Domain.Responses;
 using Newtonsoft.Json;
 using dpd_api.Domain.Shipment;
 using System.Net.Sockets;
+using dpd_api.Services.ClientServices;
 
 namespace dpd_api.Controllers
 {
@@ -14,12 +15,12 @@ namespace dpd_api.Controllers
     public class PickupController : BaseController
     {
         private readonly ILogger<PickupController> _logger;
-        private readonly IDpdClient<PickupRequest, PickupResponse> _dpdClient;
+        private readonly IDpdClient _dpdClient;
 
         public PickupController(
             ILogger<PickupController> logger,
             IConfiguration configuration,
-            IDpdClient<PickupRequest, PickupResponse> dpdClient)
+            IDpdClient dpdClient)
             : base(configuration)
         {
             _logger = logger;
@@ -37,7 +38,7 @@ namespace dpd_api.Controllers
                 PickupScope = Domain.Enums.PickupScope.EXPLICIT_SHIPMENT_ID_LIST,
                 ExplicitShipmentIdList = new[]
                 {
-                    "80614229601" // Taken from CreateShipment
+                    "80614367002" // Taken from CreateShipment
                 }
             };
 

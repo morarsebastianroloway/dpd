@@ -2,6 +2,7 @@ using dpd_api.Domain;
 using dpd_api.Domain.Requests;
 using dpd_api.Domain.Responses;
 using dpd_api.Domain.Shipment;
+using dpd_api.Services.ClientServices;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
@@ -14,9 +15,9 @@ namespace dpd_api.Controllers
     public class ServicesController : BaseController
     {
         private readonly ILogger<ServicesController> _logger;
-        private readonly IDpdClient<ServicesRequest, ServicesResponse> _dpdClient;
+        private readonly IDpdClient _dpdClient;
 
-        public ServicesController(ILogger<ServicesController> logger, IConfiguration configuration, IDpdClient<ServicesRequest, ServicesResponse> dpdClient)
+        public ServicesController(ILogger<ServicesController> logger, IConfiguration configuration, IDpdClient dpdClient)
             : base(configuration)
         {
             _logger = logger;

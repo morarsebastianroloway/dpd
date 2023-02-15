@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using dpd_api.Domain.Print;
 using System.Reflection;
 using dpd_api.Domain.Enums;
+using dpd_api.Services.ClientServices;
 
 namespace dpd_api.Controllers
 {
@@ -16,12 +17,12 @@ namespace dpd_api.Controllers
     public class PrintController : BaseController
     {
         private readonly ILogger<PrintController> _logger;
-        private readonly IDpdClient<PrintRequest, PrintResponse> _dpdClient;
+        private readonly IDpdClient _dpdClient;
 
         public PrintController(
             ILogger<PrintController> logger,
             IConfiguration configuration,
-            IDpdClient<PrintRequest, PrintResponse> dpdClient)
+            IDpdClient dpdClient)
             : base(configuration)
         {
             _logger = logger;

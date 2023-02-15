@@ -3,25 +3,25 @@ using dpd_api.Domain.Responses;
 using Newtonsoft.Json;
 using System.Text;
 
-namespace dpd_api
+namespace dpd_api.Services.ClientServices
 {
-    public class DpdClient<TRequest, TResponse> : IDpdClient<TRequest, TResponse>
+    public class DpdClientBase<TRequest, TResponse> : IDpdClientBase<TRequest, TResponse>
         where TRequest : BaseRequest
         where TResponse : BaseResponse
     {
-        #region Constants
+        //#region Constants
 
-        private const string ServicesRequestUri = "services";
-        private const string CalculationRequestUri = "calculate";
-        private const string ShipmentRequestUri = "shipment";
-        private const string PrintRequestUri = "print";
-        private const string PickupRequestUri = "pickup";
+        //private const string ServicesRequestUri = "services";
+        //private const string CalculationRequestUri = "calculate";
+        //private const string ShipmentRequestUri = "shipment";
+        //private const string PrintRequestUri = "print";
+        //private const string PickupRequestUri = "pickup";
 
-        #endregion Constants
+        //#endregion Constants
 
-        #region Private Methods
+        #region Public Methods
 
-        private async Task<TResponse?> MakeRequestAsync(TRequest request, string requestUri)
+        public async Task<TResponse?> MakeRequestAsync(TRequest request, string requestUri)
         {
             StringContent jsonContent = GetJsonContent(request);
 
@@ -46,37 +46,7 @@ namespace dpd_api
             return null;
         }
 
-        private static StringContent GetJsonContent(TRequest request)
-        {
-            string jsonData = JsonConvert.SerializeObject(request);
-            // TODO: If we need to save the request here it should be
-
-            return new(
-                jsonData,
-                Encoding.UTF8,
-                "application/json");
-        }
-
-        #endregion Private Methods
-
-        #region Public Methods
-
-        public async Task<TResponse?> MakeServicesRequestAsync(TRequest request)
-        {
-            return await MakeRequestAsync(request, DpdClient<TRequest, TResponse>.ServicesRequestUri);
-        }
-
-        public async Task<TResponse?> MakeCalculationRequestAsync(TRequest request)
-        {
-            return await MakeRequestAsync(request, DpdClient<TRequest, TResponse>.CalculationRequestUri);
-        }
-
-        public async Task<TResponse?> MakeShipmentRequestAsync(TRequest request)
-        {
-            return await MakeRequestAsync(request, DpdClient<TRequest, TResponse>.ShipmentRequestUri);
-        }
-
-        public async Task<(TResponse?, byte[]?)> MakePrintRequestAsync(TRequest request)
+        public async Task<(TResponse?, byte[]?)> MakeRequestWithFileAsync(TRequest request, string requestUri)
         {
             StringContent jsonContent = GetJsonContent(request);
 
@@ -85,7 +55,7 @@ namespace dpd_api
             httpClient.BaseAddress = new Uri("https://api.dpd.ro/v1/");
 
             // Make the call and return the response
-            var response = await httpClient.PostAsync(DpdClient<TRequest, TResponse>.PrintRequestUri, jsonContent);
+            var response = await httpClient.PostAsync(requestUri, jsonContent);
 
             if (response.IsSuccessStatusCode)
             {
@@ -110,13 +80,21 @@ namespace dpd_api
 
             return (null, null);
         }
+        #endregion Public Methods
 
-        public async Task<TResponse?> MakePickupRequestAsync(TRequest request)
+        #region Utilities
+
+        private static StringContent GetJsonContent(TRequest request)
         {
-            return await MakeRequestAsync(request, DpdClient<TRequest, TResponse>.PickupRequestUri);
+            string jsonData = JsonConvert.SerializeObject(request);
+            // TODO: If we need to save the request here it should be
+
+            return new(
+                jsonData,
+                Encoding.UTF8,
+                "application/json");
         }
 
-
-        #endregion Public Methods
+        #endregion Utilities
     }
 }

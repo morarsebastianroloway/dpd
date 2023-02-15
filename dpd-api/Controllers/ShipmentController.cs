@@ -5,6 +5,7 @@ using dpd_api.Domain.Requests;
 using dpd_api.Domain.Responses;
 using Newtonsoft.Json;
 using dpd_api.Domain.Shipment;
+using dpd_api.Services.ClientServices;
 
 namespace dpd_api.Controllers
 {
@@ -13,12 +14,12 @@ namespace dpd_api.Controllers
     public class ShipmentController : BaseController
     {
         private readonly ILogger<ShipmentController> _logger;
-        private readonly IDpdClient<ShipmentRequest, CreateShipmentResponse> _dpdClient;
+        private readonly IDpdClient _dpdClient;
 
         public ShipmentController(
             ILogger<ShipmentController> logger,
             IConfiguration configuration,
-            IDpdClient<ShipmentRequest, CreateShipmentResponse> dpdClient)
+            IDpdClient dpdClient)
             : base(configuration)
         {
             _logger = logger;

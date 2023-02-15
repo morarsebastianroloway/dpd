@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using dpd_api.Domain.Calculation;
 using dpd_api.Domain.Shipment;
 using System.Net.Sockets;
+using dpd_api.Services.ClientServices;
 
 namespace dpd_api.Controllers
 {
@@ -14,12 +15,12 @@ namespace dpd_api.Controllers
     public class CalculationController : BaseController
     {
         private readonly ILogger<CalculationController> _logger;
-        private readonly IDpdClient<CalculationRequest, CalculationResponse> _dpdClient;
+        private readonly IDpdClient _dpdClient;
 
         public CalculationController(
             ILogger<CalculationController> logger,
             IConfiguration configuration,
-            IDpdClient<CalculationRequest, CalculationResponse> dpdClient)
+            IDpdClient dpdClient)
             : base(configuration)
         {
             _logger = logger;
