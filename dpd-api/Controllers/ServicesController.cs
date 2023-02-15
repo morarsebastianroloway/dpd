@@ -1,9 +1,11 @@
 using dpd_api.Domain;
+using dpd_api.Domain.Requests;
 using dpd_api.Domain.Responses;
+using dpd_api.Domain.Shipment;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Text;
-using System.Text.Json;
 
 namespace dpd_api.Controllers
 {
@@ -19,44 +21,21 @@ namespace dpd_api.Controllers
             _logger = logger;
         }
 
-        //[HttpGet(Name = "GetServices")]
-        //public async Task<IActionResult> GetServices()
-        //{
-        //    // Construct the url
-        //    var query = new Dictionary<string, string>()
-        //    {
-        //        ["userName"] = UserName,
-        //        ["password"] = Password,
-        //    };
-
-        //    var url = GetUriWithQueryString("services", query);
-
-        //    // Construct http client
-        //    using HttpClient httpClient = new();
-        //    httpClient.BaseAddress = new Uri(BaseUrl);
-
-        //    // Make the call and return the response
-        //    var response = await httpClient.GetAsync(url);
-
-        //    if (response.IsSuccessStatusCode)
-        //    {
-
-        //        var data = await response.Content.ReadAsStringAsync();
-        //        return Content(data, "application/json");
-        //    }
-
-        //    return Ok();
-        //}
 
         [HttpGet(Name = "GetServices")]
         public async Task<IActionResult> GetServices()
         {
+            var request = new ServicesRequest()
+            {
+                UserName = UserName,
+                Password = Password,
+            };
+
+            string jsonData = JsonConvert.SerializeObject(request);
+            // TODO: If we need to save the request here it should be
+
             using StringContent jsonContent = new(
-                JsonSerializer.Serialize(new
-                {
-                    userName = UserName,
-                    password = Password,
-                }),
+                jsonData,
                 Encoding.UTF8,
                 "application/json");
 
@@ -73,8 +52,11 @@ namespace dpd_api.Controllers
             if (response.IsSuccessStatusCode)
             {
                 var dataString = await response.Content.ReadAsStringAsync();
-                var data = await response.Content.ReadFromJsonAsync<ServicesResponse>();
-                return Content(JsonSerializer.Serialize(data), "application/json");
+                // TODO: If we need to save the response here it should be
+
+                var data = JsonConvert.DeserializeObject<ServicesResponse>(dataString);
+
+                return Content(JsonConvert.SerializeObject(data), "application/json");
             }
 
             return Ok();
