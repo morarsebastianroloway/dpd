@@ -24,6 +24,7 @@ builder.Services.AddTransient(typeof(IDpdClientBase<CalculationRequest, Calculat
 builder.Services.AddTransient(typeof(IDpdClientBase<ShipmentRequest, CreateShipmentResponse>), typeof(DpdClientBase<ShipmentRequest, CreateShipmentResponse>));
 builder.Services.AddTransient(typeof(IDpdClientBase<PrintRequest, PrintResponse>), typeof(DpdClientBase<PrintRequest, PrintResponse>));
 builder.Services.AddTransient(typeof(IDpdClientBase<PickupRequest, PickupResponse>), typeof(DpdClientBase<PickupRequest, PickupResponse>));
+builder.Services.AddTransient(typeof(IDpdClientBase<FindCountryRequest, FindCountryResponse>), typeof(DpdClientBase<FindCountryRequest, FindCountryResponse>));
 
 var app = builder.Build();
 

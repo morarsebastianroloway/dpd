@@ -10,5 +10,6 @@ namespace dpd_api.Services.ClientServices
         Task<CreateShipmentResponse?> MakeShipmentRequestAsync(ShipmentRequest request);
         Task<(PrintResponse?, byte[]?)> MakePrintRequestAsync(PrintRequest request);
         Task<PickupResponse?> MakePickupRequestAsync(PickupRequest request);
+        Task<FindCountryResponse?> MakeLocationRequestAsync(FindCountryRequest request);
     }
 }
