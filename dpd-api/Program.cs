@@ -1,3 +1,7 @@
+using dpd_api;
+using dpd_api.Domain.Requests;
+using dpd_api.Domain.Responses;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -12,6 +16,7 @@ builder.Services.AddControllers()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
+builder.Services.AddTransient(typeof(IDpdClient<ShipmentRequest, CreateShipmentResponse>), typeof(DpdClient<ShipmentRequest, CreateShipmentResponse>));
 
 var app = builder.Build();
 
