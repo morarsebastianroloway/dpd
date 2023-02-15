@@ -26,6 +26,8 @@ builder.Services.AddTransient(typeof(IDpdClientBase<PrintRequest, PrintResponse>
 builder.Services.AddTransient(typeof(IDpdClientBase<PickupRequest, PickupResponse>), typeof(DpdClientBase<PickupRequest, PickupResponse>));
 builder.Services.AddTransient(typeof(IDpdClientBase<FindCountryRequest, FindCountryResponse>), typeof(DpdClientBase<FindCountryRequest, FindCountryResponse>));
 
+builder.Services.AddTransient(typeof(IDpdClient2), typeof(DpdClient2));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
