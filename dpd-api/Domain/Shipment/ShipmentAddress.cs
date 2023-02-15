@@ -1,6 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using dpd_api.Domain.Calculation;
+using Newtonsoft.Json;
 
-namespace dpd_api.Domain
+namespace dpd_api.Domain.Shipment
 {
     public class ShipmentAddress : AddressLocation
     {

@@ -1,6 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using dpd_api.Domain.Shipment;
+using Newtonsoft.Json;
 
-namespace dpd_api.Domain
+namespace dpd_api.Domain.Base
 {
     public class BaseContent
     {

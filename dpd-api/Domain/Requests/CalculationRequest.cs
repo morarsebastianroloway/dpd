@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using dpd_api.Domain.Calculation;
+using dpd_api.Domain.Shipment;
+using Newtonsoft.Json;
 
 namespace dpd_api.Domain.Requests
 {

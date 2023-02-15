@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace dpd_api.Domain
+namespace dpd_api.Domain.Shipment
 {
     public class MoneyTransferPremium
     {

@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
-using dpd_api.Domain.Responses;
 
-namespace dpd_api.Domain
+namespace dpd_api.Domain.Responses
 {
     public class CourierService
     {
