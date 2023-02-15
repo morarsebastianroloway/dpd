@@ -1,5 +1,6 @@
 ﻿using dpd_api.Domain.Enums;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace dpd_api.Domain
 {
@@ -21,6 +22,7 @@ namespace dpd_api.Domain
         /// The payer of money transfer premium
         /// </summary>
         [JsonProperty(PropertyName = "payer")]
+        [JsonConverter(typeof(StringEnumConverter))]
         public Payer payer { get; set; }
     }
 }
