@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace dpd_api.Domain.LocationCountry
+namespace dpd_api.Domain.Location
 {
     public class AddressNomenclatureType
     {

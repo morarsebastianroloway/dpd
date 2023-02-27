@@ -39,7 +39,8 @@ namespace dpd_api.Controllers
                     AddressLocation = new AddressLocation()
                     {
                         CountryId = 642, //100 - BG, 642 - RO
-                        SiteId = "642101026"// 642101026 - Alba Iulia (oficiu dpd); 68314 - Vitosha BG
+                        //SiteId = "642101026"// 642101026 - Alba Iulia (oficiu dpd); 68314 - Vitosha BG
+                        
                     }
                 },
                 Service = new CalculationService()

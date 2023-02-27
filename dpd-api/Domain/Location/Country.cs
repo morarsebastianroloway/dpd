@@ -1,8 +1,6 @@
 ﻿using Newtonsoft.Json;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.Diagnostics.Metrics;
 
-namespace dpd_api.Domain.LocationCountry
+namespace dpd_api.Domain.Location
 {
     public class Country
     {

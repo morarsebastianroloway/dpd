@@ -58,16 +58,37 @@ namespace dpd_api.Controllers
         //    return Ok();
         //}
 
-        [HttpGet(Name = "GetAllCountries")]
-        public async Task<IActionResult> GetAllCountries()
+        //[HttpGet(Name = "GetAllCountries")]
+        //public async Task<IActionResult> GetAllCountries()
+        //{
+        //    var request = new FindCountryRequest()
+        //    {
+        //        UserName = UserName,
+        //        Password = Password,
+        //    };
+
+        //    var data = await _dpdClient.MakeRequestAsync(request,"location/country");
+        //    var deserializedObject = JsonConvert.DeserializeObject<FindCountryResponse>(data);
+        //    if (deserializedObject != null)
+        //    {
+        //        return Content(JsonConvert.SerializeObject(deserializedObject), "application/json");
+        //    }
+
+        //    return Ok();
+        //}
+
+        [HttpGet(Name = "GetStates")]
+        public async Task<IActionResult> GetStates()
         {
-            var request = new FindCountryRequest()
+            var request = new FindStateRequest()
             {
                 UserName = UserName,
                 Password = Password,
+                CountryId = 642,
+                Name = "Bis",
             };
 
-            var data = await _dpdClient.MakeRequestAsync(request,"location/country");
+            var data = await _dpdClient.MakeRequestAsync(request, "location/state");
             var deserializedObject = JsonConvert.DeserializeObject<FindCountryResponse>(data);
             if (deserializedObject != null)
             {

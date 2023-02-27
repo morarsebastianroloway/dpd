@@ -1,4 +1,4 @@
-﻿using dpd_api.Domain.LocationCountry;
+﻿using dpd_api.Domain.Location;
 using Newtonsoft.Json;
 
 namespace dpd_api.Domain.Responses
